@@ -27,76 +27,7 @@
 <p>Total est Expenses for the year: $<span id="expenseResult">0</span></p>
 <p>Remaining Balance: $<span id="balanceResult">0</span></p>
 
-<script>
-
-let newExpenses = {};
-
-function totalPay(workHours, payRate) {
-    if (workHours <= 0 || payRate <= 0) {
-        alert("No pay can be estimated");
-        return 0;
-    }
-    return workHours * payRate * 52;
-}
-
-function totalCost(expenses) {
-    let sum = 0;
-    for (let key in expenses) {
-        sum += expenses[key];
-    }
-    return sum;
-}
-
-function calculate() {
-    let workHours = parseFloat(document.getElementById("workHours").value);
-    let payRate = parseFloat(document.getElementById("payRate").value);
-
-    let expenses = {
-        Groceries: parseFloat(document.getElementById("groceries").value),
-        Rent: parseFloat(document.getElementById("rent").value),
-        Util: parseFloat(document.getElementById("util").value),
-        Clothing: parseFloat(document.getElementById("clothing").value),
-        Entertainment: parseFloat(document.getElementById("entertainment").value),
-        Food: parseFloat(document.getElementById("food").value)
-    };
-
-    newExpenses = expenses;
-
-    let estimatedPay = totalPay(workHours, payRate);
-    let estimatedExpenses = totalCost(expenses) * 12;
-    let remainingBalance = estimatedPay - estimatedExpenses;
-
-    document.getElementById("payResult").textContent = estimatedPay;
-    document.getElementById("expenseResult").textContent = estimatedExpenses;
-    document.getElementById("balanceResult").textContent = remainingBalance;
-}
-
-function exportToFile() {
-    const inputs = [
-        document.getElementById('workHours').value,
-        document.getElementById('payRate').value,
-        document.getElementById('groceries').value,
-        document.getElementById('rent').value,
-        document.getElementById('util').value,
-        document.getElementById('clothing').value,
-        document.getElementById('entertainment').value,
-        document.getElementById('food').value,
-        document.getElementById('payResult').textContent,
-        document.getElementById('expenseResult').textContent,
-        document.getElementById('balanceResult').textContent
-    ];
-
-    const blob = new Blob([inputs.join('\n')], { type: 'text/plain' });
-    const link = document.createElement('a');
-
-    link.download = 'userInput.txt';
-    link.href = window.URL.createObjectURL(blob);
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
-</script>
+<script src="pipeAndFilter.js"></script>
 
 </body>
 </html>
