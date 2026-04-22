@@ -22,11 +22,19 @@
     
     <button id="calculateBtn">Calculate</button>
     <button type="button" onclick="exportToFile()">Export</button>
+
+    <button id="loadCBPBtn">Load CBP Data</button>
+    <pre id="cbpResult"></pre>
+
     
     <h3>Results</h3>
     <p>Estimated Pay for the year: $<span id="payResult">0</span></p>
     <p>Total est Expenses for the year: $<span id="expenseResult">0</span></p>
     <p>Remaining Balance: $<span id="balanceResult">0</span></p>
+
+    <p>Total number of employees in the state of AZ: <span id="employeeCount">0</span></p>
+    <p>Number of Established Businesses in AZ: <span id="establishedBusinessCount">0</span></p>
+    <p>The state code: <span id="state">0</span></p>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="script.js"></script>
