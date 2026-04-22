@@ -36,6 +36,22 @@ function totalCost( newExpenses ){
     return sumCost;
 };
 
+//Api insert #3- Demographic data from Arizona
+$("#loadCBPBtn").click(async function(){
+        try{
+            const res = await fetch("http://localhost:5000/cbp");
+            const data = await res.json();
+
+            $("#employeeCount").text(data.EMP);
+            $("#establishedBusinessCount").text(data.ESTAB);
+            $("#state").text(data.state);
+
+        }catch(err){
+            console.error("fetch failed:", err);
+            $("#cbpResult").text("Error loading cbp data");
+        }
+});
+
 //This function runs after the calculate button is clicked
 $('#calculateBtn').click(function (){
     //takes in the values input by the user
@@ -93,7 +109,7 @@ $('#calculateBtn').click(function (){
             alert(`Above avg ($${avgHourly.toFixed(2)}/hr)`);
         }
     })
-    .catch(err => console.error(err));
+
 });
 
 function exportToFile(){
